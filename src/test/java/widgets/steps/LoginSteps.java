@@ -1,11 +1,9 @@
 package widgets.steps;
 
-import util.webElementUtils;
-import widgets.pages.LoginPage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import widgets.pages.widgetBasePage;
+import widgets.pages.LoginPage;
 
 /**
  * Created by paddy.zhong on 7/19/2017.

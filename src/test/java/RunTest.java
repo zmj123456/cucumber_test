@@ -9,7 +9,8 @@ import cucumber.api.testng.*;
         plugin = {"pretty",
                 "json:target/cucumber.json",
         },
-        glue = "widgets.steps"
+        glue = "widgets.steps",
+        tags = {"@google"}
 )
 
 public class RunTest extends AbstractTestNGCucumberTests{

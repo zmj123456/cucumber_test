@@ -46,7 +46,7 @@ public class LoginPage {
     }
 
     private WebDriver initDriver() {
-        System.setProperty("webdriver.chrome.driver", "/Users/paddy.zhong/RingCentral/drivers/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/Users/paddy.zhong/RingCentral/drivers/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         String path = System.getProperty("user.dir");
         options.addArguments("load-extension=" + path + "//extension//rc");

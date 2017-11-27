@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import util.webElementUtils;
@@ -29,6 +30,11 @@ public class LoginPage {
     public void openChrome() throws InterruptedException {
         loginStep();
 
+    }
+
+    @AfterTest
+    public void closeChrome(){
+        driver.quit();
     }
 
     public void loginStep() throws InterruptedException {
@@ -87,4 +93,6 @@ public class LoginPage {
         webElementUtils.findElement(widgetBasePage.COMPOSE_TEXT).click();
         Thread.sleep(3000);
     }
+
+
 }

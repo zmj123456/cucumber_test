@@ -1,3 +1,4 @@
+RunTest.class
 util/webElementUtils$2.class
 widgets/pages/LoginPage.class
 util/CucumberHooks.class

@@ -52,9 +52,9 @@ public class LoginPage {
     }
 
     private WebDriver initDriver() {
-        System.setProperty("webdriver.chrome.driver", "/Users/paddy.zhong/RingCentral/drivers/chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
         String path = System.getProperty("user.dir");
+        System.setProperty("webdriver.chrome.driver", path + "//drivers//chromedriver.exe");
+        ChromeOptions options = new ChromeOptions();
         options.addArguments("load-extension=" + path + "//extension//rc");
 //        final DesiredCapabilities capabilities = new DesiredCapabilities();
 //        capabilities.setCapability(ChromeOptions.CAPABILITY, options);

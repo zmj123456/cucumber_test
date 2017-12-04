@@ -13,12 +13,18 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import util.webElementUtils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Created by paddy.zhong on 7/18/2017.
  */
 public class LoginPage {
 
     WebDriver driver ;
+    public Logger logger = org.apache.logging.log4j.LogManager.getLogger(Thread.currentThread().getStackTrace()[1].getClassName());
+
+
 
 
     public LoginPage(){
@@ -53,9 +59,20 @@ public class LoginPage {
 
     private WebDriver initDriver() {
         String path = System.getProperty("user.dir");
-        System.setProperty("webdriver.chrome.driver", path + "//drivers//chromedriver.exe");
+        String osName = System.getProperty("os.name");
+        logger.info("OS name is " + osName);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("load-extension=" + path + "//extension//rc");
+        if (osName.equals("Mac OS X")){
+            logger.info("chromedriver for Mac OS is running");
+            System.setProperty("webdriver.chrome.driver", path+"//drivers//chromedriver");
+        }else if (osName.equals("Linux")){
+            logger.info("chromedriverLinux for Linux is running");
+            System.setProperty("webdriver.chrome.driver", path + "//drivers//chromedriverLinux");
+        }else {
+            logger.info("chromedriver.exe for Windows is running");
+            System.setProperty("webdriver.chrome.driver", path + "//drivers//chromedriver.exe");
+        }
 //        final DesiredCapabilities capabilities = new DesiredCapabilities();
 //        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         driver = new ChromeDriver(options);

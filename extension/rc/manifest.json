@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "version": "4.0.0",
-  "name": "RingCentral for Google Chrome",
-  "description": "RingCentral for Google Chrome",
+  "version": "4.0.0.232",
+  "name": "RingCentral for Google",
+  "description": "RingCentral for Google",
   "background": {
     "page": "background.html"
   },
@@ -17,6 +17,12 @@
     "storage"
   ],
   "browser_action": {},
+  "icons": {
+    "16": "rc16.png",
+    "32": "rc32.png",
+    "48": "rc48.png",
+    "128": "rc128.png"
+  },
   "web_accessible_resources": [
     "redirect.html",
     "client.html"
@@ -31,6 +37,7 @@
       ]
     }
   ],
+  "content_security_policy": "script-src 'self' https://*.googleapis.com https://*.google.com https://*.segment.com https://*.mxpnl.com; object-src 'self'",
   "options_ui": {
     "page": "options.html"
   },

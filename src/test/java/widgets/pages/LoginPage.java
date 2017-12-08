@@ -40,7 +40,7 @@ public class LoginPage {
 
     @AfterTest
     public void closeChrome(){
-        driver.quit();
+        driver.close();
     }
 
     public void loginStep() throws InterruptedException {
@@ -54,6 +54,7 @@ public class LoginPage {
         element.sendKeys("https://api-up.lab.rcch.ringcentral.com");
         webElementUtils.findElement(widgetBasePage.ENABLE_BUTTON).click();
         webElementUtils.findElement(widgetBasePage.SAVE_BUTTON).click(); // change environment
+        Thread.sleep(3000);
         webElementUtils.findElement(widgetBasePage.SINGIN_BUTTON).click();
     }
 
@@ -92,16 +93,22 @@ public class LoginPage {
             }
             driver.switchTo().window(handles);
         }
-        new WebDriverWait(driver,60).until(ExpectedConditions.numberOfElementsToBe(By.id("rc-login-number"),1));
-        WebElement element2 = webElementUtils.findElement(widgetBasePage.USERNAME_BOX);
+        new WebDriverWait(driver,60).until(ExpectedConditions.numberOfElementsToBe(By.xpath("//*[@id=\"credential\"]"),1));
+        WebElement element2 = webElementUtils.findElement(widgetBasePage.FIRST_USERNAME_BOX);
         element2.clear();
         element2.sendKeys(username);
-        WebElement element1 = webElementUtils.findElement(widgetBasePage.PASSWORD_BOX);
+        WebElement webElement =webElementUtils.findElement(widgetBasePage.NEXT_BUTTON);
+        webElement.click();
+        Thread.sleep(6000);
+        WebElement element1 = webElementUtils.findElement(widgetBasePage.SECOND_USERNAME_BOX);
         element1.clear();
-        element1.sendKeys(pwd);
-        webElementUtils.findElement(widgetBasePage.POPUPSINGIN_BUTTON).click();
+        element1.sendKeys(username);
+        WebElement password = webElementUtils.findElement(widgetBasePage.PASSWORD_BOX);
+        password.clear();
+        password.sendKeys(pwd);
+        webElementUtils.findElement(widgetBasePage.SING_BUTTON).click();
         driver.switchTo().window(handle);
-        webElementUtils.findElement(widgetBasePage.SETTING_BUTTON).click();
+        webElementUtils.findElement(widgetBasePage.CALLHISTORY).click();
         Thread.sleep(3000);
     }
 

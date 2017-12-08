@@ -7,6 +7,7 @@ import util.webElementUtils;
  */
 public class StatusPage {
     public void changeStep() throws InterruptedException {
+        webElementUtils.findElement(widgetBasePage.MORE_OPTIONS_SELECTOR).click();
         webElementUtils.findElement(widgetBasePage.SETTING_BUTTON).click();
         webElementUtils.findElement(widgetBasePage.STATUS_BUTTON).click();
         webElementUtils.findElement(widgetBasePage.BUSY_BUTTON).click();

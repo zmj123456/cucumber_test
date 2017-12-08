@@ -1,5 +1,6 @@
 package widgets.pages;
 
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +22,7 @@ public class testForCall {
     public static WebDriver driver;
 
     public static WebDriver secondDriver;
+
 
     @Test
     public void loginTest(String username, String pwd) throws InterruptedException {
@@ -58,16 +60,22 @@ public class testForCall {
             }
             newWebdriver.switchTo().window(handles);
         }
-        new WebDriverWait(newWebdriver, 60).until(ExpectedConditions.numberOfElementsToBe(By.id("rc-login-number"), 1));
-        WebElement element2 = webElementUtils.findElement(widgetBasePage.USERNAME_BOX);
+        new WebDriverWait(newWebdriver, 60).until(ExpectedConditions.numberOfElementsToBe(By.xpath("//*[@id=\"credential\"]"), 1));
+        WebElement element2 = webElementUtils.findElement(widgetBasePage.FIRST_USERNAME_BOX);
         element2.clear();
         element2.sendKeys(username);
-        WebElement element1 = webElementUtils.findElement(widgetBasePage.PASSWORD_BOX);
+        WebElement webElement =webElementUtils.findElement(widgetBasePage.NEXT_BUTTON);
+        webElement.click();
+        Thread.sleep(6000);
+        WebElement element1 = webElementUtils.findElement(widgetBasePage.SECOND_USERNAME_BOX);
         element1.clear();
-        element1.sendKeys(pwd);
-        webElementUtils.findElement(widgetBasePage.POPUPSINGIN_BUTTON).click();
+        element1.sendKeys(username);
+        WebElement password = webElementUtils.findElement(widgetBasePage.PASSWORD_BOX);
+        password.clear();
+        password.sendKeys(pwd);
+        webElementUtils.findElement(widgetBasePage.SING_BUTTON).click();
         newWebdriver.switchTo().window(handle);
-        webElementUtils.findElement(widgetBasePage.SETTING_BUTTON).click();
+        webElementUtils.findElement(widgetBasePage.CALLHISTORY).click();
         Thread.sleep(3000);
     }
 
@@ -96,6 +104,7 @@ public class testForCall {
         webElementUtils.findElement(widgetBasePage.SAVE_BUTTON).click(); // change environment
         webElementUtils.findElement(widgetBasePage.SINGIN_BUTTON).click();
     }
+
 
 
 }

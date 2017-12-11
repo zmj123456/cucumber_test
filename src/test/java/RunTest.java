@@ -5,7 +5,7 @@ import cucumber.api.testng.*;
 
 
 @CucumberOptions(
-        features = "classpath:login.feature",
+        features = "classpath:features",
         plugin = {"pretty",
                 "json:target/cucumber.json",
         },

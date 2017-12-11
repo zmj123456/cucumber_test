@@ -1,6 +1,6 @@
 @google
 @test
-Feature:
+Feature:To verify whether user is on right status
   @Automation @P1
   Scenario: Change status
     Given user has login CTI app 18552026668 and Test!123

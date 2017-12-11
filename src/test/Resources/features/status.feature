@@ -1,5 +1,5 @@
 @google
-
+@test
 Feature:
   @Automation @P1
   Scenario: Change status

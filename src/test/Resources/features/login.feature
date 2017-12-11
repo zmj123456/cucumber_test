@@ -1,5 +1,5 @@
 @google
-
+@test
 Feature: To verify whether user is able to login in RC CTI app
 
   @Automation
